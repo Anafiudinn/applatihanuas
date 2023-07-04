@@ -33,16 +33,34 @@
     <h1 class="text-body-emphasis">Ujian Pemrograman Web</h1>
     <hr class="col-3 col-md-2 mb-5">
 
-    <div class="row g-5">
-      <div class="col-md-6">
-        <h2 class="text-body-emphasis">Tampil Input Data</h2>
-        <a href="{{ site_url('Welcome/index') }}" class="btn btn-success">Tambah</a>
-      </div>
-    </div>
-  </main>
-  <footer class="pt-5 my-5 text-body-secondary border-top">
-    Ujian Pemrograman Web 2023
-  </footer>
+<div class="row g-5">
+  <div class="col-md-6">
+    <h2 class="text-body-emphasis">Tampil Input Data</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Username</th>
+        <th>Artikel</th>
+        <th>Created_at</th>
+        <th>Update_at</th>
+        <th>Aksi</th>
+      </tr>
+      @foreach($post_list as $post)
+      <tr>
+        <td>{{ $post->user->username }}</td>
+        <td>{{ $post->artikel }}</td>
+        <td>{{ $post->created_at }}</td>
+        <td>{{ $post->updated_at }}</td>
+        <td><a href="{{ site_url('Welcome/hapus/'.$post->id)}}">Hapus</a> | <a href="{{ site_url('Welcome/ubah/'.$post->id) }}">Ubah</a></td>
+      </tr>
+      @endforeach
+    </table>
+    <a href="{{ site_url('Welcome/index') }}" class="btn btn-success">Tambah</a>
+  </div>
+</div>
+</main>
+<footer class="pt-5 my-5 text-body-secondary border-top">
+Ujian Pemrograman Web 2023
+</footer>
 </div>
 </body>
 </html>
